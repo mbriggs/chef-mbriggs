@@ -1,0 +1,6 @@
+name             'dotfiles'
+maintainer       'Matt Briggs'
+maintainer_email 'matt@mattbriggs.net'
+license          'Apache 2.0'
+description      'sets up my configs'
+version          '0.0.1'
