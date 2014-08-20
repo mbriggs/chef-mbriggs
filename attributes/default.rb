@@ -1,0 +1,1 @@
+default['mbriggs']['npm'] = []
