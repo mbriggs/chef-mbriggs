@@ -23,5 +23,5 @@ node['mbriggs']['rbenv']['rubies'].each do |ruby|
 end
 
 execute 'permissions' do
-  command 'chown -R `whoami`:staff ~/.rbenv'
+  command "chown -R #{ENV['USER']}:staff ~/.rbenv"
 end
