@@ -31,7 +31,7 @@ end
 
 node['mbriggs']['rbenv']['rubies'].each do |ruby|
   execute "install ruby - #{ruby}" do
-    command "rbenv install #{ruby}"
+    command "~/.rbenv/bin/rbenv install #{ruby}"
   end
 end
 
