@@ -5,6 +5,10 @@ git 'checkout rbenv' do
   destination File.expand_path('~/.rbenv')
 end
 
+directory 'plugins' do
+  action :create
+end
+
 node['mbriggs']['rbenv']['plugins'].each do |plugin|
   git "install #{plugin['name']}" do
     repository "http://github.com/#{plugin['gh']}.git"
@@ -16,4 +20,8 @@ node['mbriggs']['rbenv']['rubies'].each do |ruby|
   execute "install ruby - #{ruby}" do
     command "rbenv install #{ruby}"
   end
+end
+
+execute 'permissions' do
+  command "chown -R #{whoami}:staff ~/.rbenv"
 end
