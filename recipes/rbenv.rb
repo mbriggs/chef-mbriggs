@@ -6,6 +6,7 @@ git 'checkout rbenv' do
 end
 
 directory 'plugins' do
+  path File.expand_path('~/.rbenv/plugins')
   action :create
 end
 
