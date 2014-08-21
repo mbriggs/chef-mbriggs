@@ -17,6 +17,18 @@ node['mbriggs']['rbenv']['plugins'].each do |plugin|
   end
 end
 
+execute 'permissions' do
+  command "chown -R #{ENV['USER']}:staff ~/.rbenv"
+end
+
+execute "add to path" do
+  command 'export PATH="$HOME/.rbenv/bin:$PATH"'
+end
+
+execute "init" do
+  command 'eval "$(rbenv init -)"'
+end
+
 node['mbriggs']['rbenv']['rubies'].each do |ruby|
   execute "install ruby - #{ruby}" do
     command "rbenv install #{ruby}"
