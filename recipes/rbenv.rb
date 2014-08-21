@@ -1,3 +1,5 @@
+return if File.directory?(File.expand_path '~/.rbenv')
+
 git 'checkout rbenv' do
   repository 'https://github.com/sstephenson/rbenv.git'
   destination '~/.rbenv'
