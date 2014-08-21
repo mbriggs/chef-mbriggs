@@ -10,6 +10,11 @@ directory 'plugins' do
   action :create
 end
 
+git "install ruby-build" do
+  repository "http://github.com/#{plugin['gh']}.git"
+  destination File.expand_path("~/.rbenv/plugins/sstephenson/ruby-build")
+end
+
 node['mbriggs']['rbenv']['plugins'].each do |plugin|
   git "install #{plugin['name']}" do
     repository "http://github.com/#{plugin['gh']}.git"
