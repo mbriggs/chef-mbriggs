@@ -35,7 +35,7 @@ execute "init" do
 end
 
 node['mbriggs']['rbenv']['rubies'].each do |ruby|
-  next if File.directory(File.expand_path "~/.rbenv/versions/#{ruby}")
+  next if File.directory?(File.expand_path "~/.rbenv/versions/#{ruby}")
 
   execute "install ruby - #{ruby}" do
     command "~/.rbenv/bin/rbenv install #{ruby}"
