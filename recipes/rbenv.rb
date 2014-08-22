@@ -1,8 +1,8 @@
-return if File.directory?(File.expand_path '~/.rbenv')
-
-git 'checkout rbenv' do
-  repository 'https://github.com/sstephenson/rbenv.git'
-  destination File.expand_path('~/.rbenv')
+unless File.directory?(File.expand_path '~/.rbenv')
+  git 'checkout rbenv' do
+    repository 'https://github.com/sstephenson/rbenv.git'
+    destination File.expand_path('~/.rbenv')
+  end
 end
 
 directory 'plugins' do
@@ -35,6 +35,8 @@ execute "init" do
 end
 
 node['mbriggs']['rbenv']['rubies'].each do |ruby|
+  next if File.directory(File.expand_path "~/.rbenv/versions/#{ruby}")
+
   execute "install ruby - #{ruby}" do
     command "~/.rbenv/bin/rbenv install #{ruby}"
   end
