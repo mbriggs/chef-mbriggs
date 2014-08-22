@@ -23,7 +23,7 @@ node['mbriggs']['rbenv']['plugins'].each do |plugin|
 end
 
 execute 'permissions' do
-  command "chown -R #{ENV['USER']}:staff ~/.rbenv"
+  command "sudo chown -R #{ENV['USER']}:staff ~/.rbenv"
 end
 
 execute "add to path" do
@@ -41,5 +41,5 @@ node['mbriggs']['rbenv']['rubies'].each do |ruby|
 end
 
 execute 'permissions' do
-  command "chown -R #{ENV['USER']}:staff ~/.rbenv"
+  command "sudo chown -R #{ENV['USER']}:staff ~/.rbenv"
 end
