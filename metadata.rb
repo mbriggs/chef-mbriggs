@@ -1,4 +1,4 @@
-name             'dotfiles'
+name             'mbriggs'
 maintainer       'Matt Briggs'
 maintainer_email 'matt@mattbriggs.net'
 license          'Apache 2.0'
