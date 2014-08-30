@@ -3,4 +3,5 @@ git "~/scripts" do
   destination File.expand_path("~/scripts")
   action :sync
   user node['mbriggs']['user']
+  group node['mbriggs']['group']
 end

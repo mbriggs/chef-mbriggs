@@ -3,6 +3,7 @@ git "~/.zsh" do
   destination File.expand_path("~/.zsh")
   action :sync
   user node['mbriggs']['user']
+  group node['mbriggs']['group']
 end
 
 execute "install zsh" do

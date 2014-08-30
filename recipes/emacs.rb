@@ -7,4 +7,5 @@ git '~/.emacs.d' do
   destination File.expand_path('~/.emacs.d')
   action :sync
   user node['mbriggs']['user']
+  group node['mbriggs']['group']
 end
