@@ -3,5 +3,5 @@ execute "update" do
 end
 
 execute "install apt packages" do
-  command "sudo apt-get install -y #{node['mbriggs']['apt'].join ' '}"
+  command "DEBIAN_FRONTEND=noninteractive sudo apt-get install -y #{node['mbriggs']['apt'].join ' '}"
 end
