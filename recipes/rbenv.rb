@@ -1,5 +1,5 @@
 u = node['mbriggs']['user']
-u = node['mbriggs']['group']
+g = node['mbriggs']['group']
 
 unless File.directory?(File.expand_path '~/.rbenv')
   git 'checkout rbenv' do
