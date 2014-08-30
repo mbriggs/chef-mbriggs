@@ -2,6 +2,7 @@ unless File.directory?(File.expand_path '~/.rbenv')
   git 'checkout rbenv' do
     repository 'https://github.com/sstephenson/rbenv.git'
     destination File.expand_path('~/.rbenv')
+    user node['mbriggs']['user']
   end
 end
 
@@ -12,18 +13,16 @@ end
 
 git "install ruby-build" do
   repository "http://github.com/sstephenson/ruby-build.git"
+  user node['mbriggs']['user']
   destination File.expand_path("~/.rbenv/plugins/ruby-build")
 end
 
 node['mbriggs']['rbenv']['plugins'].each do |plugin|
   git "install #{plugin['name']}" do
     repository "http://github.com/#{plugin['gh']}.git"
+    user node['mbriggs']['user']
     destination File.expand_path("~/.rbenv/plugins/#{plugin['name']}")
   end
-end
-
-execute 'permissions' do
-  command "sudo chown -R #{ENV['USER']}:staff ~/.rbenv"
 end
 
 execute "add to path" do
@@ -40,8 +39,4 @@ node['mbriggs']['rbenv']['rubies'].each do |ruby|
   execute "install ruby - #{ruby}" do
     command "~/.rbenv/bin/rbenv install #{ruby}"
   end
-end
-
-execute 'permissions' do
-  command "sudo chown -R #{ENV['USER']}:staff ~/.rbenv"
 end
