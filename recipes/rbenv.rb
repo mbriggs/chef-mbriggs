@@ -33,14 +33,6 @@ node['mbriggs']['rbenv']['plugins'].each do |plugin|
   end
 end
 
-execute "add to path" do
-  command 'export PATH="$HOME/.rbenv/bin:$PATH"'
-end
-
-execute "init" do
-  command 'eval "$(rbenv init -)"'
-end
-
 node['mbriggs']['rbenv']['rubies'].each do |ruby|
   next if File.directory?(File.expand_path "~#{u}/.rbenv/versions/#{ruby}")
 
