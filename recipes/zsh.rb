@@ -1,13 +1,13 @@
 git "~/.zsh" do
   repository "https://github.com/mbriggs/.zsh"
-  destination File.expand_path("~/.zsh")
+  destination "/home/#{node['mbriggs']['user']}/.zsh"
   action :sync
   user node['mbriggs']['user']
   group node['mbriggs']['group']
 end
 
 execute "install zsh" do
-  cwd File.expand_path("~/.zsh")
+  cwd "/home/#{node['mbriggs']['user']}/.zsh"
   command "make install"
   user node['mbriggs']['user']
   group node['mbriggs']['group']
