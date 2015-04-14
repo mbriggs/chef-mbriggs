@@ -33,10 +33,28 @@ node['mbriggs']['rbenv']['plugins'].each do |plugin|
   end
 end
 
+node['mbriggs']['rbenv']['default-gems'].each do |gem|
+  execute "add default gem #{gem}" do
+    command "echo \"#{gem}\" >> ~#{u}/.rbenv/default-gems"
+    user u
+    group g
+  end
+end
+
 node['mbriggs']['rbenv']['rubies'].each do |ruby|
   next if File.directory?(File.expand_path "~#{u}/.rbenv/versions/#{ruby}")
 
   execute "install ruby - #{ruby}" do
     command "~#{u}/.rbenv/bin/rbenv install #{ruby}"
+    user u
+    group g
+  end
+
+  if node['mbriggs']['rbenv']['global'] == ruby 
+    execute "set global to #{ruby}" do
+      command "~#{u}/.rbenv/bin/rbenv global #{ruby}"
+      user u
+      group g
+    end
   end
 end
