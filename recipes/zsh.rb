@@ -12,3 +12,7 @@ execute "install zsh" do
   user node['mbriggs']['user']
   group node['mbriggs']['group']
 end
+
+execute "chsh" do
+  command "chsh vagrant -s /usr/bin/zsh"
+end
