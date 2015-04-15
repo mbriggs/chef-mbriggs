@@ -15,8 +15,8 @@ execute "install zsh" do
   group node['mbriggs']['group']
 end
 
-link "#{root}/zshrc" do
-  to "/home/#{node['mbriggs']['user']}/.zshrc"
+link "/home/#{node['mbriggs']['user']}/.zshrc" do
+  to "#{root}/zshrc"
   user node['mbriggs']['user']
   group node['mbriggs']['group']
 end
