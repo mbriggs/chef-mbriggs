@@ -9,8 +9,13 @@ git "~/.zsh" do
 end
 
 execute "install zsh" do
-  cwd root
-  command "make install"
+  cwd root command "make install"
+  user node['mbriggs']['user']
+  group node['mbriggs']['group']
+end
+
+link "#{root}/zshrc" do
+  to "/home/#{node['mbriggs']['user']}/.zshrc"
   user node['mbriggs']['user']
   group node['mbriggs']['group']
 end
