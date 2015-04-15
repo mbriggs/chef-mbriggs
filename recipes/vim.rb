@@ -1,5 +1,6 @@
 git "~/.vim" do
   repository "https://github.com/mbriggs/.vim"
+  checkout_branch 'master'
   destination "/home/#{node['mbriggs']['user']}/.vim"
   action :sync
   user node['mbriggs']['user']

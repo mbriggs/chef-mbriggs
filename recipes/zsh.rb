@@ -2,6 +2,7 @@ root =  "/home/#{node['mbriggs']['user']}/.zsh"
 
 git "~/.zsh" do
   repository "https://github.com/mbriggs/.zsh"
+  checkout_branch 'master'
   destination root
   action :sync
   user node['mbriggs']['user']

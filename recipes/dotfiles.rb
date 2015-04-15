@@ -1,5 +1,6 @@
 git "~/dotfiles" do
   repository "https://github.com/mbriggs/dotfiles"
+  checkout_branch 'master'
   destination "/home/#{node['mbriggs']['user']}/dotfiles"
   action :sync
   user node['mbriggs']['user']
