@@ -7,7 +7,7 @@ git "~/dotfiles" do
   group node['mbriggs']['group']
 end
 
-if File.exists? "~/scripts/link-dotfiles"
+if File.exists? "/home/#{node['mbriggs']['user']}/scripts/link-dotfiles"
   execute "link" do
     command "/home/#{node['mbriggs']['user']}/scripts/link-dotfiles"
     user node['mbriggs']['user']

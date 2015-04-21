@@ -1,6 +1,6 @@
 root =  "/home/#{node['mbriggs']['user']}/.zsh"
 
-git "~/.zsh" do
+git root do
   repository "https://github.com/mbriggs/.zsh"
   checkout_branch 'master'
   destination root
