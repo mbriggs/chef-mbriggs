@@ -1,7 +1,6 @@
 git "~/scripts" do
   repository "https://github.com/mbriggs/scripts"
-  checkout_branch 'master'
-  revision 'master'
+  enable_checkout false
   destination "/home/#{node['mbriggs']['user']}/scripts"
   action :sync
   user node['mbriggs']['user']
